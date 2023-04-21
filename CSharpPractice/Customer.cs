@@ -36,6 +36,8 @@ namespace CSharpPractice
             get { return _lastname; }
             set { _lastname = value; }
         }
+
+        public override string ToString() => fullName;
         public bool Validate()
         {
             var isValid = true;

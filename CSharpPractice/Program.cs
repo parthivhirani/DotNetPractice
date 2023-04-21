@@ -77,6 +77,48 @@ namespace CSharpPractice
             book.AddGrades(34.80);
             // book.grades.Add(32.56); // access modifier of grades List is default so it can't be accessed from another class
             book.displayGrade();
+
+
+            // implicitly typed variable must be initialized.
+            // var demo;
+            // demo = 10;
+
+
+            // default value of datatypes
+            int def = default;
+
+            // verbatim string
+            string verbatim = @"Hello \n Simform";
+
+
+            // enum demo
+            Console.WriteLine(Days.Monday); // Monday
+            Console.WriteLine((int)Days.Monday); // 0
+
+
+            // anonymous type
+            var student = new
+            {
+                Id = 1,
+                FirstName = "James",
+                LastName = "Bond",
+                Address = new { Id = 1, City = "London", Country = "UK" }
+            };
+            Console.WriteLine(student.ToString());
+
+            // dynamic type
+            dynamic dynamicVar = 34.2F;
+            Console.WriteLine(dynamicVar.GetType());
+
+
+            // instance of generic class
+            Gen<int> myGen = new Gen<int>();
+            myGen.id = 23;
+            Console.WriteLine(myGen.id);
+
+            Gen<string> myStrGen = new Gen<string>();
+            myStrGen.id = "24";
+
         }
         static int addition(int x, int y)
         {
@@ -87,5 +129,84 @@ namespace CSharpPractice
         {
             return x + y;
         }
+
+        // structure
+        struct Strct
+        {
+            public int x1;
+            // constructor
+            public Strct(int x1)
+            {
+                this.x1 = x1;
+            }
+        }
+
+        // enum
+        enum Days
+        {
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Sunday
+        }
+
     }
+
+    // inherit class and make child class static
+    //class A
+    //{
+    //    public int x;
+    //    public A(int x)
+    //    {
+    //        this.x = x;
+    //    }
+
+    //    A a = new A(1);
+    //}
+    //static class B: A
+    //{
+    //    public static void printMsg()
+    //    {
+    //        Console.WriteLine(a.x);
+    //    }   
+    //}
+
+
+
+    // generic class
+    class Gen<T>
+    {
+        public T id;
+    }
+
+
+    // trying to inherit multiple classes using partial class (gives error)
+    //class A
+    //{
+    //    protected int a1 { get; set; }
+
+    //}
+    //class B
+    //{
+    //    public int b1 { get; set; }
+    //}
+    //partial class C: A
+    //{
+    //    C c0 = new C();
+    //    c0.a1 = 1;
+    //}
+    //partial class C1: B
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        C c = new C();
+    //        c.a2 = 23;
+
+    //    }
+    //}
+
+
+
 }
