@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CSharpPractice
 {
@@ -7,6 +8,7 @@ namespace CSharpPractice
         public static void Main(String[] args)
         {
             // types of variable
+            Console.WriteLine("--Basic Datatypes--");
             int integer1 = 3;
             string string1 = "hello";
             float float1 = 3.67F;
@@ -21,6 +23,7 @@ namespace CSharpPractice
 
 
             // if condition
+            Console.WriteLine("\n--If Statement--");
             int votingAeg = 18;
 
             Console.Write("Enter your age: ");
@@ -32,6 +35,7 @@ namespace CSharpPractice
 
 
             // nested for loop
+            Console.WriteLine("\n--Nested for loop--");
             Console.WriteLine("Demo of 'Nested FOR LOOP'");
             for (int outer = 1; outer <= 3; outer++)
             {
@@ -44,6 +48,7 @@ namespace CSharpPractice
 
 
             // array sorting
+            Console.WriteLine("\n--Array Sorting--");
             string[] cars = { "Volvo", "BMW", "Ford", "Mazda" };
             Console.WriteLine("Before Sorting");
             foreach (string car in cars)
@@ -59,6 +64,7 @@ namespace CSharpPractice
 
 
             // static method
+            Console.WriteLine("\n--Static Method Demo--");
             static void MyName(string name, int age)
             {
                 Console.WriteLine($"Name: {name}\nAge: {age}");
@@ -68,8 +74,9 @@ namespace CSharpPractice
 
 
             // method overloading
-            Console.WriteLine(addition(3, 2));
-            Console.WriteLine(addition(3.21, 2.26));
+            Console.WriteLine("\n--Method Overloading Demo--");
+            Console.WriteLine($"Addition of integer: {addition(3, 2)}");
+            Console.WriteLine($"Addition of float: {addition(3.21, 2.26)}");
 
             var book = new Grades();
             Console.WriteLine("Student's Grades are:");
@@ -92,11 +99,13 @@ namespace CSharpPractice
 
 
             // enum demo
+            Console.WriteLine("\n--Enum--");
             Console.WriteLine(Days.Monday); // Monday
             Console.WriteLine((int)Days.Monday); // 0
 
 
             // anonymous type
+            Console.WriteLine("\n--Anonymous Type--");
             var student = new
             {
                 Id = 1,
@@ -107,11 +116,13 @@ namespace CSharpPractice
             Console.WriteLine(student.ToString());
 
             // dynamic type
+            Console.WriteLine("\n--Dynamic Type--");
             dynamic dynamicVar = 34.2F;
             Console.WriteLine(dynamicVar.GetType());
 
 
             // instance of generic class
+            Console.WriteLine("\n--Generic Class--");
             Gen<int> myGen = new Gen<int>();
             myGen.id = 23;
             Console.WriteLine(myGen.id);
@@ -119,7 +130,68 @@ namespace CSharpPractice
             Gen<string> myStrGen = new Gen<string>();
             myStrGen.id = "24";
 
+
+            // List<> Collection
+            Console.WriteLine("\n--List<> Collection--");
+            var employee = new List<int>
+            {
+                11,25,32,47,59
+            };
+            // Console.WriteLine(employee[7]);
+            Console.WriteLine(employee[1]);
+
+            // Dictionary and Hashtable
+            Console.WriteLine("\n--Dictionary & Hashtable--");
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+            dict.Add(1, "one");
+            dict.Add(2, "two");
+            dict.Add(3, "three");
+            // dict[2] = "four";
+
+            Hashtable ht = new Hashtable(dict);
+            foreach(DictionaryEntry htEle in ht)
+            {
+                Console.WriteLine($"Key: {htEle.Key}, Value: {htEle.Value}");
+            }
+
+
+            // Stack
+            Console.WriteLine("\n--Stack--");
+            Stack<int> myStack = new Stack<int>();
+            myStack.Push(1);
+            myStack.Push(2);
+            Console.WriteLine("Stack:");
+            foreach (var ele in myStack)
+            {
+                Console.Write($"{ele}, ");
+            }
+
+            Console.WriteLine("\n--Value Tuple(multiple return)--");
+            static (int, string, string) GetPerson()
+            {
+                Console.Write("Enter Age:");
+                var age = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter Fname:");
+                var fname = Console.ReadLine();
+                Console.Write("Enter Lname:");
+                var lname = Console.ReadLine();
+                return (age, fname, lname);
+            }
+            Console.WriteLine(GetPerson());
+
         }
+        // Value Tuple
+        static (int, string, string) GetPerson()
+        {
+            Console.WriteLine("Enter Age:");
+            var age = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Fname:");
+            var fname = Console.ReadLine();
+            Console.Write("Enter Lname:");
+            var lname = Console.ReadLine();
+            return (age, fname, lname);
+        }
+
         static int addition(int x, int y)
         {
             return x + y;
